@@ -1,0 +1,69 @@
+*{
+    color:#4B5974;
+}
+#main{
+    width:100%;
+    height:100%;
+}
+
+#loginInteract{
+    background-color: rgb(255, 255, 255);
+    float:left;
+    position: absolute;
+    left: 0px;
+    padding: 200px 250px;
+    width:50%;
+    height:100%;
+    box-shadow: 150px;
+}
+
+#loginBackground{
+    float:right;
+    position:fixed;
+    height:100%;
+    width:60%;
+    overflow:hidden;
+    position: absolute;
+    right: 0;
+    
+}
+
+input {
+    width:100%;
+    border: 1px solid #ff912b;
+    right: auto;
+    border-radius: 30px;
+    text-align: left;
+    margin: 10px 0px;
+    padding: 15px 30px;
+    color:black;
+}
+
+input:focus{
+    outline: none;
+    box-shadow: 0 0 0 2px orange;
+}
+
+button{
+    width:100%;
+    background-color:#ff912b;
+    border-radius: 30px;
+    border-width: 0px;
+    padding: 15px 50px;
+    color:white;
+    margin-top:50px;
+}
+
+
+#headerImg{
+    width:100%;
+    text-align: center;
+}
+
+#loginBackground img{
+    rotate: 90deg;
+    height:100%;
+    text-align: right;
+    filter: blur(1px);
+    -webkit-filter: blur(1px);
+}
