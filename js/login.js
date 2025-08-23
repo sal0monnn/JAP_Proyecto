@@ -1,15 +1,16 @@
-
-document.addEventListener("DOMContentLoader", (event)=>{
-    let btn = document.getElementById("btnLogin");
-
-
-    btn.addEventListener('click', function(event) {
-    let username = document.getElementById("user");
-    let pass = document.getElementById("pass");
-
-    if (username>0 && pass>0){
-        document.location="index.html";
-        document.localStorage.setItem('Usuario', username);
+ document.addEventListener("DOMContentLoaded", (event) => {
+    if (localStorage.getItem("Usuario").length>0){
+        window.location.replace("/index.html");
     }
-    });
-});
+  });
+
+
+document.getElementById("loginButton").addEventListener("click",()=>{
+    let usuario  = document.getElementById("username").value.trim()
+    let password = document.getElementById("password").value.trim()
+
+    if (password.length > 0 && usuario.length>0){
+        window.location.replace("/index.html");
+        localStorage.setItem("Usuario", usuario);  
+    }
+})
