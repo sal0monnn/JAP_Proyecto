@@ -11,7 +11,7 @@
     float:left;
     position: absolute;
     left: 0px;
-    padding: 200px 250px;
+    padding: 120px 200px;
     width:50%;
     height:100%;
     box-shadow: 150px;
@@ -21,7 +21,7 @@
     float:right;
     position:fixed;
     height:100%;
-    width:70%;
+    width: 60%;
     overflow:hidden;
     position: absolute;
     right: 0;
