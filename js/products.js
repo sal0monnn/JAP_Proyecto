@@ -17,7 +17,7 @@ async function fetchProductos(url){
                 `Precio:${producto.cost}`,
                 `Cantidad de productos vendidos:${producto.soldCount}`
             ]
-                let elemento= document.createElement("li")
+                let elemento= document.createElement("div")
             info.forEach(atributo=>{
                 const p=document.createElement('p')
                 p.textContent=atributo
