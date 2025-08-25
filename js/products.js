@@ -12,10 +12,10 @@ async function fetchProductos(url){
         for(producto of data.products){
 
             const info=[
-                `Nombre:${producto.name}`,
-                `Descripcion:${producto.description}`,
+                `${producto.name}`,
+                `${producto.description}`,
                 `Precio:${producto.cost}`,
-                `Cantidad de productos vendidos:${producto.soldCount}`
+                `Productos vendidos:${producto.soldCount}`
             ]
                 let elemento= document.createElement("div")
             info.forEach(atributo=>{
@@ -26,7 +26,7 @@ async function fetchProductos(url){
             const image= document.createElement('img')
             image.src=producto.image
             elemento.appendChild(image)
-            listaProductos.appendChild(elemento)
+            listaProductos.appendChild(elemento).classList.add("listadoElementos", "grid-item");
          }
     }catch(error){
         console.log(`Error found: ${error}`)

@@ -1,0 +1,31 @@
+#catalogoAutos{
+    padding: 50px;
+    flex-wrap: wrap;
+    -direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; 
+
+}
+
+.listadoElementos{
+   line-height: 15px;
+   height: 430px;
+   text-align: left;
+   transition-duration: 1s;
+   background: white;
+   border-radius: 10%;
+   padding:40px;
+}
+
+.listadoElementos img{
+    display: block;
+    margin: auto;
+    border-radius: 10%;
+    width:70%;
+}
+
+.listadoElementos:hover{
+    transform: scale(1.1);
+    background-color: rgb(241, 238, 235);
+}
