@@ -39,3 +39,24 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    const usuario = localStorage.getItem("usuario");
+
+    if (!usuario) {
+        window.location.href = "login.html";
+    } else {
+        const usuarioNombre = document.getElementById("usuarioNombre");
+        if (usuarioNombre) {
+            usuarioNombre.textContent = usuario;
+        }
+
+        const logoutBtn = document.getElementById("logout");
+        if (logoutBtn) {
+            logoutBtn.addEventListener("click", function() {
+                localStorage.removeItem("usuario");
+                window.location.href = "login.html";
+            });
+        }
+    }
+});
