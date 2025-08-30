@@ -1,35 +1,59 @@
+function showProductsList(productsArray) {
+    let htmlContentToAppend = "";
 
-let urlAutos="https://japceibal.github.io/emercado-api/cats_products/101.json"
-const listaProductos= document.getElementById("catalogoAutos")
-async function fetchProductos(url){
-    try{
-        response= await(fetch(url))
-        if (!response.ok)
-            throw Error(response.statusText);
-        const data= await(response.json())
+    for (let i = 0; i < productsArray.length; i++) {
+        let product = productsArray[i];
 
+        let priceToShow = `${product.cost} ${product.currency}`;
+        let soldCountText = `${product.soldCount} vendidos`;
 
-        for(producto of data.products){
-
-            const info=[
-                `${producto.name}`,
-                `${producto.description}`,
-                `Precio:${producto.cost}`,
-                `Productos vendidos:${producto.soldCount}`
-            ]
-                let elemento= document.createElement("div")
-            info.forEach(atributo=>{
-                const p=document.createElement('p')
-                p.textContent=atributo
-                elemento.appendChild(p)
-            })
-            const image= document.createElement('img')
-            image.src=producto.image
-            elemento.appendChild(image)
-            listaProductos.appendChild(elemento).classList.add("listadoElementos", "grid-item");
-         }
-    }catch(error){
-        console.log(`Error found: ${error}`)
+        htmlContentToAppend += `
+            <div class="col-md-6 col-sm-12 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm border-0 rounded-3 custom-card cursor-active" onclick="setProductID(${product.id})">
+                    <img src="${product.image}" class="card-img-top img-fluid" alt="${product.name}">
+                    <div class="card-body p-3">
+                        <h5 class="card-title">${product.name}</h5>
+                        <p class="card-text text-muted">${product.description}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <strong>${priceToShow}</strong>
+                            <small class="text-muted">${soldCountText}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
     }
+
+    document.getElementById("products-container").innerHTML = htmlContentToAppend;
 }
-fetchProductos(urlAutos)
+
+function setProductID(id) {
+    localStorage.setItem("productID", id);
+    window.location = "product-info.html";
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    showSpinner();
+
+    let catID = localStorage.getItem("catID") || 101;
+
+    let url = PRODUCTS_URL + catID + ".json";
+
+    getJSONData(url).then(function (resultObj) {
+        hideSpinner();
+
+        if (resultObj.status === "ok") {
+            let productsArray = resultObj.data.products;
+            showProductsList(productsArray);
+        } else {
+            console.error("Error:", resultObj.data);
+            document.getElementById("products-container").innerHTML = `
+                <div class="col-12">
+                    <div class="alert alert-danger text-center">
+                        No se pudieron cargar los productos.
+                    </div>
+                </div>
+            `;
+        }
+    });
+});
