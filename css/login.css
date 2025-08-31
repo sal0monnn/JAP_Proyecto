@@ -9,10 +9,9 @@
 #loginInteract{
     background-color: rgb(255, 255, 255);
     float:left;
-    position: absolute;
     left: 0px;
     padding: 120px 200px;
-
+    margin: 15px;
     height:100%;
     box-shadow: 150px;
 
