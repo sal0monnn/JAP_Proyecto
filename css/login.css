@@ -12,9 +12,10 @@
     position: absolute;
     left: 0px;
     padding: 120px 200px;
-    width:50%;
+    margin: 15px;
     height:100%;
     box-shadow: 150px;
+
 }
 
 #loginBackground{
@@ -37,6 +38,7 @@ input {
     margin: 10px 0px;
     padding: 15px 30px;
     color:black;
+
 }
 
 input:focus{

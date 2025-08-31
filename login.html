@@ -18,32 +18,36 @@
 </head>
 
 <body>
-  <div id="main">
-    <div class="container" id="loginInteract">
-      <img src="img/login.png" id="headerImg">
-      <br>
-      <p>Usuario</p>
-      <input type="text" id="username" name="username" placeholder="Usuario...">
-      <br>
-      <p>Contraseña</p>
-      <input type='password' id="password" name="password" placeholder="....."><br>
+  <div id="main" class="container-fluid">
+    <div class=" row">
+      <div class="col-lg-6 px-0  position-relative " id="loginInteract">
+        <img class="img-fluid" src="img/login.png" id="headerImg">
+        <br>
+        <p>Usuario</p>
+        <input type="text" id="username" name="username" placeholder="Usuario...">
+        <br>
+        <p>Contraseña</p>
+        <input type='password' id="password" name="password" placeholder="....."><br>
 
-      <button type='button' id="loginButton">Ingresar</button>
-    
+        <button type='button' id="loginButton">Ingresar</button>
+      
+      </div>
+      <div class=" col-lg-6 d-none d-lg-flex" id="loginBackground">
+        <img id="imgBg " src="img/toys_index.jpg">
+      </div>
     </div>
-    <div id="loginBackground">
-      <img id="imgBg" src="img/toys_index.jpg">
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-end">
+          <a href="#">Volver arriba</a>
+        </p>
+        <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      </div>
     </div>
-  </div>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
-    </div>
+
   </footer>
   <script src="js/login.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
