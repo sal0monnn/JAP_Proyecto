@@ -57,3 +57,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+document.getElementById("inputSearch").addEventListener("input", (e) => {
+    let input = document.getElementById("inputSearch").value.trim().toLowerCase();
+
+    productsArray.filter(product =>`${product.name}`.toLowerCase().includes(input));
+});
