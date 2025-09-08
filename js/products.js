@@ -13,7 +13,7 @@ function createProductCard(productsArray) {
         let priceToShow = `${product.cost} ${product.currency}`;
         let soldCountText = `${product.soldCount} vendidos`;
 
-        // Push the HTML card for each product into the cards array
+        // se carga al array
         cards.push(`
             <div class="col-md-6 col-sm-12 col-lg-4 mb-4">
                 <div class="card h-100 shadow-sm border-0 rounded-4 custom-card cursor-active elementList" onclick="setProductID(${product.id})">

@@ -1,13 +1,10 @@
-function showProduct(productArray) {
+function showProduct(product) {
     let htmlContentToAppend = "";
 
-    for (let i = 0; i < productArray.length; i++) {
-        let product = productArray[i];
+    let priceToShow = `${product.cost} ${product.currency}`;
+    let soldCountText = `${product.soldCount} vendidos`;
 
-        let priceToShow = `${product.cost} ${product.currency}`;
-        let soldCountText = `${product.soldCount} vendidos`;
-
-        htmlContentToAppend += `
+    htmlContentToAppend = `
         <div class="col-md-6 col-sm-12 col-lg-4 mb-4">
             <div class="card col-12 elementList" onclick="setProductID(${product.id})">
                 <img src="${product.image}" class="card-img-top img-fluid" alt="${product.name}">
@@ -18,12 +15,11 @@ function showProduct(productArray) {
                     <strong>${priceToShow}</strong>
                     <p class="mb-4">${soldCountText}</p>
                 </div>
-                <h5>Descripcion:</h5>
+                <h5>Descripción:</h5>
                 <p class="mb-4">${product.description}</p>
             </div>
         </div>
-        `;
-    }
+    `;
 
     document.getElementById("product-info").innerHTML = htmlContentToAppend;
 }
@@ -38,8 +34,8 @@ document.addEventListener("DOMContentLoaded", function () {
         hideSpinner();
 
         if (resultObj.status === "ok") {
-            let productArray = resultObj.data;
-            showProduct(productArray);
+            let product = resultObj.data; // It's a single product object
+            showProduct(product);
         } else {
             console.error("Error:", resultObj.data);
             document.getElementById("product-info").innerHTML = `
