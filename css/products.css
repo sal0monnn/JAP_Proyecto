@@ -29,8 +29,13 @@
     max-width: 500px;
     margin: 50px auto;
     border-radius: 30px;
+    border:none;
     overflow: hidden;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-container {
+    position: relative;
 }
 
 .search-bar .form-control {

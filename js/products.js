@@ -1,13 +1,20 @@
-function showProductsList(productsArray) {
-    let htmlContentToAppend = "";
+let tarjetasOriginales = []; 
 
+function showProductsList(productCards) {
+    let container = document.getElementById("products-container");
+    container.innerHTML = productCards.join('');  // vuelve el array un string, los '' son espaciados
+}
+
+function createProductCard(productsArray) {
+    let cards = [];  // array con todas las tarjetas
     for (let i = 0; i < productsArray.length; i++) {
         let product = productsArray[i];
 
         let priceToShow = `${product.cost} ${product.currency}`;
         let soldCountText = `${product.soldCount} vendidos`;
 
-        htmlContentToAppend += `
+        // Push the HTML card for each product into the cards array
+        cards.push(`
             <div class="col-md-6 col-sm-12 col-lg-4 mb-4">
                 <div class="card h-100 shadow-sm border-0 rounded-4 custom-card cursor-active elementList" onclick="setProductID(${product.id})">
                     <img src="${product.image}" class="card-img-top img-fluid" alt="${product.name}">
@@ -21,10 +28,9 @@ function showProductsList(productsArray) {
                     </div>
                 </div>
             </div>
-        `;
+        `);
     }
-
-    document.getElementById("products-container").innerHTML = htmlContentToAppend;
+    return cards;
 }
 
 function setProductID(id) {
@@ -43,8 +49,9 @@ document.addEventListener("DOMContentLoaded", function () {
         hideSpinner();
 
         if (resultObj.status === "ok") {
-            let productsArray = resultObj.data.products;
-            showProductsList(productsArray);
+            const productsArray = resultObj.data.products;
+            tarjetasOriginales = createProductCard(productsArray);  // guardo las tarjetas originales
+            showProductsList(tarjetasOriginales);  // se muestran las cartas originales
         } else {
             console.error("Error:", resultObj.data);
             document.getElementById("products-container").innerHTML = `
@@ -58,8 +65,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.getElementById("inputSearch").addEventListener("input", (e) => {
-    let input = document.getElementById("inputSearch").value.trim().toLowerCase();
+// buscador de productos
+document.getElementById("inputSearch").addEventListener("input", searchProducts);
 
-    productsArray.filter(product =>`${product.name}`.toLowerCase().includes(input));
-});
+function searchProducts(e) {
+    let input = document.getElementById("inputSearch").value.trim().toLowerCase();
+    let filteredProducts = tarjetasOriginales.filter(productCard => {
+        return productCard.toLowerCase().includes(input);
+    });
+
+    showProductsList(filteredProducts);
+}
