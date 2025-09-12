@@ -52,3 +52,12 @@
     border:none;
     overflow: hidden; 
 }
+#relevance{
+    background-image:'img\sorting-order.png'  
+}
+.sorting-button-icon{
+    width: 24px;
+    height: 24px;
+    display: row;
+    
+}
