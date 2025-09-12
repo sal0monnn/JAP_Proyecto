@@ -106,3 +106,11 @@ document.getElementById("clear_button").addEventListener("click",()=>{
    
     showProductsList(productsArray);
 })
+
+document.getElementById("inputSearch").addEventListener("input",()=>{
+    let input = document.getElementById("inputSearch").value.trim().toLowerCase();
+    let filteredProducts = productsArray.filter(product=> {
+        return (product.description.toLowerCase().includes(input) || product.name.toLowerCase().includes(input));
+    });
+    showProductsList(filteredProducts)
+})

@@ -50,11 +50,17 @@
 
 
   <main class="pb-5 container">
+
+    <div class="search-bar">
+      <div class="input-group">
+        <input type="search" class="form-control" placeholder="Busque aquí..." aria-label="Search" aria-describedby="search-addon" id="inputSearch">
+      </div>
+    </div>
     <div  id="filter-bar">
         <div>
-          <button id="sort_increasing_prices">Up</button>
-          <button id="sort_decreasing_prices">Down</button>
-          <button id="relevance">Rel</button>
+          <button class ="filter_buttons" id="sort_increasing_prices">Up</button>
+          <button class ="filter_buttons" id="sort_decreasing_prices">Down</button>
+          <button class ="filter_buttons" id="relevance">Rel</button>
         </div>
         <div>
            <span>Precio</span>
