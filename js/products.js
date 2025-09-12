@@ -1,3 +1,6 @@
+
+let productsArray=[]
+
 function showProductsList(productsArray) {
     let htmlContentToAppend = "";
 
@@ -32,18 +35,20 @@ function setProductID(id) {
     window.location = "product-info.html";
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    showSpinner();
-
     let catID = localStorage.getItem("catID") || 101;
 
     let url = PRODUCTS_URL + catID + ".json";
+
+  
+
+document.addEventListener("DOMContentLoaded", function () {
+    showSpinner();
 
     getJSONData(url).then(function (resultObj) {
         hideSpinner();
 
         if (resultObj.status === "ok") {
-            let productsArray = resultObj.data.products;
+            productsArray = resultObj.data.products;
             showProductsList(productsArray);
         } else {
             console.error("Error:", resultObj.data);
@@ -57,3 +62,47 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+
+document.getElementById("boton_filtrar").addEventListener("click",()=>{
+
+    const maxPrice= document.getElementById("max_price").value.trim()
+    const minPrice= document.getElementById("min_price").value.trim()
+    console.log(maxPrice)
+    if ((maxPrice > minPrice )) {
+        let productsArrayFiltrado = productsArray.filter((producto)=>{
+             return producto.cost >= minPrice && producto.cost <= maxPrice
+        })
+        showProductsList(productsArrayFiltrado)
+    }else{
+        alert("Valor minimo tiene que ser menor que el maximo")
+    }
+})
+
+document.getElementById("sort_increasing_prices").addEventListener("click",()=>{
+    let productsSortedUp = productsArray
+    productsSortedUp.sort((a,b)=>{
+        return a.cost-b.cost
+    })
+    showProductsList(productsSortedUp)
+})
+document.getElementById("sort_decreasing_prices").addEventListener("click",()=>{
+    let productsSortedDown = productsArray
+    productsSortedDown.sort((a,b)=>{
+        return b.cost - a.cost
+    })
+    showProductsList(productsSortedDown)
+})
+document.getElementById("relevance").addEventListener("click",()=>{
+    let productsSortedDownRel = productsArray
+    productsSortedDownRel.sort((a,b)=>{
+        return b.soldCount - a.soldCount
+    })
+    showProductsList(productsSortedDownRel)
+})
+document.getElementById("clear_button").addEventListener("click",()=>{
+    document.getElementById("max_price").value="0";
+    document.getElementById("min_price").value="0";
+   
+    showProductsList(productsArray);
+})

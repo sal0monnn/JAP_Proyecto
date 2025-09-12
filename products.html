@@ -34,25 +34,38 @@
           <li class="nav-item">
           </li>
 
-        <li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
-     data-bs-toggle="dropdown" aria-expanded="false">
-    <span id="usuarioNombre">Usuario</span>
-  </a>
-  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-    <li><a class="dropdown-item" href="#" id="logout">Cerrar sesión</a></li>
-  </ul>
-</li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <span id="usuarioNombre">Usuario</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#" id="logout">Cerrar sesión</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
 
-   <main class="pb-5 container">
-  </div>
-  <div class="row" id="products-container">
-  </div>
+  <main class="pb-5 container">
+    <div  id="filter-bar">
+        <div>
+          <button id="sort_increasing_prices">Up</button>
+          <button id="sort_decreasing_prices">Down</button>
+          <button id="relevance">Rel</button>
+        </div>
+        <div>
+           <span>Precio</span>
+           <input type="text" inputmode="numeric" oninput="this.value = this.value.replace(/\D+/g, '')" id="min_price" placeholder="0">
+           <input type="text" inputmode="numeric" oninput="this.value = this.value.replace(/\D+/g, '')"  id="max_price" placeholder="0">
+           <button id="boton_filtrar">Filtrar</button>
+           <button id="clear_button"> Limpiar</button>
+        </div>
+    </div>
+    <div class="row" id="products-container">
+    </div>
 </main>
 
 

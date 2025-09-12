@@ -24,3 +24,7 @@
 .textSold{
     color:orange;
 }
+#filter-bar{
+    display: flex;
+    justify-content: space-between;
+}
