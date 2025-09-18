@@ -23,6 +23,7 @@ function showProduct(product) {
                         <div class="card-body">
                         <span class="score">
                             <h2 class="mb-3">${product.name}</h2>
+                            <h5 class="mb-3">${product.category}</h2>
                             <div>
                             <p class="mb-4" id="vendidos">(${soldCountText})</p>
                             <span class="score">
