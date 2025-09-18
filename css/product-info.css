@@ -1,0 +1,60 @@
+
+#product-image{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.custom-card {
+    border-radius: 15px;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    padding: 5%;
+}
+
+.card-body {
+    padding: 5%;
+}
+
+main {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.thumbnail-image {
+    width: 10%;
+    margin: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.3s ease, border 0.3s ease;
+}
+.thumbnail-image:hover {
+    transform: scale(1.1);
+    border-color: orange;
+}
+
+
+.thumbnail-image.selected {
+    border-color: orange;
+    transform: scale(1.1);
+}
+
+.main-image-container img {
+    object-fit: cover;
+    max-height: 400px;
+}
+
+#vendidos{
+    color:orange;
+    float:right;
+    display:flex;
+}
+
+.fa-star{
+    color:orange;
+}
+
+.score{
+    margin-bottom:60px;
+}
