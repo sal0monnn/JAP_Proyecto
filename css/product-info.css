@@ -34,7 +34,6 @@ main {
     border-color: orange;
 }
 
-
 .thumbnail-image.selected {
     border-color: orange;
     transform: scale(1.1);
@@ -43,6 +42,7 @@ main {
 .main-image-container img {
     object-fit: cover;
     max-height: 400px;
+    border-radius: 10%;
 }
 
 #vendidos{

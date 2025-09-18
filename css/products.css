@@ -27,6 +27,8 @@
 #filter-bar{
     display: flex;
     justify-content: space-between;
+    padding:1%;
+    padding-left:4%;
     border:none;
     overflow: hidden;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -50,14 +52,25 @@
 }
 .filter_buttons{
     border:none;
+    border-radius: 10%;
     overflow: hidden; 
 }
 #relevance{
     background-image:'img\sorting-order.png'  
 }
 .sorting-button-icon{
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     display: row;
-    
+}
+
+.input-box{
+    max-width: 500px;
+    border-radius: 30px;
+    border-color:  rgb(244, 228, 223);
+    overflow: hidden;
+    text-indent: 10px;
+}
+.input-box.selected {
+  border-color: orange;
 }

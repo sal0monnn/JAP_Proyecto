@@ -48,7 +48,6 @@
     </div>
   </nav>
 
-
   <main class="pb-5 container">
 
     <div class="search-bar">
@@ -64,17 +63,15 @@
         </div>
         <div>
            <span>Precio</span>
-           <input type="text" inputmode="numeric" oninput="this.value = this.value.replace(/\D+/g, '')" id="min_price" placeholder="0">
-           <input type="text" inputmode="numeric" oninput="this.value = this.value.replace(/\D+/g, '')"  id="max_price" placeholder="0">
-           <button id="boton_filtrar">Filtrar</button>
-           <button id="clear_button"> Limpiar</button>
+           <input type="text" class="input-box" inputmode="numeric" oninput="this.value = this.value.replace(/\D+/g, '')" id="min_price" placeholder="0">
+           <input type="text" class="input-box" inputmode="numeric" oninput="this.value = this.value.replace(/\D+/g, '')"  id="max_price" placeholder="0">
+           <button class="btn btn-light" id="boton_filtrar">Filtrar</button>
+           <button class="btn btn-light" id="clear_button"> Limpiar</button>
         </div>
     </div>
     <div class="row" id="products-container">
     </div>
 </main>
-
-
 
   <footer class="text-muted">
     <div class="container">
