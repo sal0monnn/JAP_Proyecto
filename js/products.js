@@ -35,8 +35,11 @@ function setProductID(id) {
     window.location = "product-info.html";
 }
 
-    let catID = localStorage.getItem("catID") || 101;
+   let catID = localStorage.getItem("catID");
 
+if (!catID) {
+    console.error("No se encontró un catID en localStorage.");}
+    
     let url = PRODUCTS_URL + catID + ".json";
 
   
