@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let product = resultObj.data;
             showProduct(product);
 
-            // 🔹 Aquí agregamos la sección de calificaciones
+            //  Aquí agregamos la sección de calificaciones
             showRatings();
         } else {
             console.error("Error:", resultObj.data);
@@ -188,7 +188,7 @@ function showProduct(product) {
         });
     });
 }
-// 🔹 Renderiza calificaciones y formulario
+//  Renderiza calificaciones y formulario
 function showRatings() {
   let html = `
     <div class="card shadow-sm p-4">
@@ -218,7 +218,7 @@ function showRatings() {
   document.getElementById("submit-rating").addEventListener("click", saveRating);
 }
 
-// 🔹 Renderiza las estrellitas
+//  Renderiza las estrellitas
 function renderStars(rating = 0) {
   const starsDiv = document.getElementById("rating-stars");
   starsDiv.innerHTML = "";
@@ -235,7 +235,7 @@ function renderStars(rating = 0) {
   }
 }
 
-// 🔹 Guarda la calificación
+//  Guarda la calificación
 function saveRating() {
   const starsDiv = document.getElementById("rating-stars");
   const opinion = document.getElementById("opinion").value;
