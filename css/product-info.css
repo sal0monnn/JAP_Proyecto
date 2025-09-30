@@ -58,3 +58,76 @@ main {
 .score{
     margin-bottom:60px;
 }
+
+/* Estrellas de calificación visual */
+.rating {
+  display: inline-flex;
+  gap: 5px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.rating i {
+  color: #ddd; /* gris por defecto */
+  transition: color 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+
+.rating i.selected {
+  color: orange; /* seleccionadas por JS */
+}
+
+/* Hover solo escala la estrella, el color lo controla JS */
+.rating i:hover {
+  transform: scale(1.1);
+}
+/* Thumbnails */
+.thumb-img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+/* Stars */
+.star {
+  font-size: 22px;
+  cursor: pointer;
+  color: #ccc;
+  margin-right: 5px;
+}
+
+.star.checked {
+  color: #ffc107;
+}
+
+/* Ratings container */
+#ratings-section .card {
+  border-radius: 12px;
+  background: #fff;
+}
+
+.rating-fixed .fa-star {
+  color: #ccc; /* gris por defecto */
+  font-size: 22px;
+  margin-right: 5px;
+}
+
+.rating-fixed .fa-star.checked {
+  color: orange; /* amarillo fijo */
+}
+
+.rating-fixed .fa-star {
+  color: #ccc; /* gris por defecto */
+  font-size: 22px;
+  margin-right: 5px;
+}
+
+.rating-fixed .fa-star.checked {
+  color: orange; /* amarillo fijo */
+}
+
+.rating i {
+  color: #ffc107 !important; /* Esto asegura que las superiores sean amarillas */
+  transition: color 0.2s, transform 0.2s;
+}
