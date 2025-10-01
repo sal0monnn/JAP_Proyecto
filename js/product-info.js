@@ -108,6 +108,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // 🔹 Aquí agregamos la sección de calificaciones
             showRatings();
+
+            showRelatedProducts(product);
         } else {
             console.error("Error:", resultObj.data);
             document.getElementById("product-info").innerHTML = `
@@ -129,7 +131,7 @@ function showProduct(product) {
     let htmlContentToAppend = `
     <div class="row">
         <div class="col-md-12">
-            <div class="custom-card h-100 shadow-sm border-0 rounded-4">
+            <div class="card shadow-sm p-4 rounded-4">
                 <div class="row g-0">
                     <!-- GALERÍA DE IMÁGENES -->
                     <div class="col-md-6">
@@ -264,4 +266,29 @@ function saveRating() {
 
   document.getElementById("opinion").value = "";
   renderStars();
+}
+
+// productos relacionados
+function showRelatedProducts(product){
+    let relatedProducts = product.relatedProducts;
+    let htmlRelatedProducts = "";
+    
+    relatedProducts.forEach((relatedProduct) => {
+        htmlRelatedProducts += 
+        `<div class="col-12 col-md-12 col-lg-4 related-product-card">
+            <div class="card" onclick="setProductID(${relatedProduct.id})" id="related-product">
+                <img src="${relatedProduct.image}" class="card-img-top" alt="${relatedProduct.name}">
+                <div class="card-body">
+                <h5 class="card-title">${relatedProduct.name}</h5>
+                </div>
+            </div>
+        </div>
+        `; 
+    }); 
+    document.getElementById("related-products").innerHTML = htmlRelatedProducts;
+}
+
+function setProductID(id) {
+    localStorage.setItem("productID", id);
+    window.location = "product-info.html";
 }

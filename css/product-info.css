@@ -1,26 +1,33 @@
-
+/* producto */
 #product-image{
     object-fit: cover;
     width: 100%;
     height: 100%;
 }
 
-.custom-card {
+.card {
     border-radius: 15px;
     overflow: hidden;
     width: 100%;
     margin: 0 auto;
-    padding: 5%;
+    padding: 2%;
+}
+
+.custom-card{
+  margin-top: 10%;
 }
 
 .card-body {
-    padding: 5%;
+  padding: 5%;
 }
 
-main {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+#vendidos{
+    color:orange;
+    float:right;
+    display:flex;
 }
+
+/* thumbnails */
 
 .thumbnail-image {
     width: 10%;
@@ -45,11 +52,11 @@ main {
     border-radius: 10%;
 }
 
-#vendidos{
-    color:orange;
-    float:right;
-    display:flex;
+.thumbnail-image.active{
+  border-color: grey;
 }
+
+/* calificacion */
 
 .fa-star{
     color:orange;
@@ -130,4 +137,23 @@ main {
 .rating i {
   color: #ffc107 !important; /* Esto asegura que las superiores sean amarillas */
   transition: color 0.2s, transform 0.2s;
+}
+
+/* productos relacionados */
+
+#related-products-title > h5{
+  font-weight:bold;
+  padding:1%;
+}
+
+#related-product{
+  padding: 5%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.3s ease, border 0.3s ease;
+}
+
+#related-product:hover{
+  transform: scale(1.1);
+  border-color: orange;
 }

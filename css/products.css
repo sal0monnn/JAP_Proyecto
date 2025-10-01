@@ -1,20 +1,21 @@
 .elementList{
    line-height: 15px;
    text-align: left;
-   transition-duration: 1s;
-   padding:50px;
-   margin-top:10px;
+   transition-duration: 1.5s;
+   padding:5%;
+   margin:1%;
+   border-radius: 5%;
 }
 
 .elementList img{
     display: block;
     margin: auto;
-    border-radius: 10%;
+    border-radius: 5%;
 }
 
 .elementList:hover{
     transform: scale(1.05);
-    background-color: rgb(244, 228, 223);
+    border-color: orange;
 }
 
 .elementList h5{
@@ -26,12 +27,14 @@
 }
 #filter-bar{
     display: flex;
+    background: white;
     justify-content: space-between;
     padding:1%;
     padding-left:4%;
     border:none;
     overflow: hidden;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1%;
 }
 .search-bar {
     max-width: 500px;
