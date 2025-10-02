@@ -113,18 +113,20 @@ document.addEventListener("DOMContentLoaded", function () {
             getJSONData(commentUrl).then((res)=>{
                 if(res.status ==="ok"){
                     let calificaciones= res.data;
-                    let ratings = document.getElementById("ratings-list")
-                    if (ratings.querySelector("p")) ratings.innerHTML = "";   
-                    for(calificacion of calificaciones){
-                        const nueva_calificacion=`
-                            <div class="mb-3 border-bottom pb-2">
-                                <strong class="text-primary">${calificacion.user}</strong>
-                                <span class="text-warning">${"★".repeat(calificacion.score)}${"☆".repeat(5 - calificacion.rating)}</span>
-                                <span class="text-muted small"> - ${calificacion.dateTime}</span>
-                                <p>${calificacion.description}</p>
-                            </div>`;
-                        
-                        ratings.insertAdjacentHTML("afterbegin", nueva_calificacion);
+                    if(calificaciones.isArray() && calificaciones.length >=1){
+                        let ratings = document.getElementById("ratings-list")
+                        if (ratings.querySelector("p")) ratings.innerHTML = "";   
+                        for(calificacion of calificaciones){
+                            const nueva_calificacion=`
+                                <div class="mb-3 border-bottom pb-2">
+                                    <strong class="text-primary">${calificacion.user}</strong>
+                                    <span class="text-warning">${"★".repeat(calificacion.score)}${"☆".repeat(5 - calificacion.rating)}</span>
+                                    <span class="text-muted small"> - ${calificacion.dateTime}</span>
+                                    <p>${calificacion.description}</p>
+                                </div>`;
+                            
+                            ratings.insertAdjacentHTML("afterbegin", nueva_calificacion);
+                        }
                     }
                 } else{
                     console.log("Error:", res.data)
