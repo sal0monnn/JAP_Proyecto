@@ -118,10 +118,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     for(calificacion of calificaciones){
                         const nueva_calificacion=`
                             <div class="mb-3 border-bottom pb-2">
-                            <strong class="text-primary">${calificacion.user}</strong>
-                            <span class="text-warning">${"★".repeat(calificacion.score)}${"☆".repeat(5 - calificacion.rating)}</span>
-                            <span class="text-muted small"> - ${calificacion.dateTime}</span>
-                            <p>${calificacion.description}</p>
+                                <strong class="text-primary">${calificacion.user}</strong>
+                                <span class="text-warning">${"★".repeat(calificacion.score)}${"☆".repeat(5 - calificacion.rating)}</span>
+                                <span class="text-muted small"> - ${calificacion.dateTime}</span>
+                                <p>${calificacion.description}</p>
                             </div>`;
                         
                         ratings.insertAdjacentHTML("afterbegin", nueva_calificacion);
@@ -220,7 +220,7 @@ function showRatings() {
         <div class="col-lg-6 border-end">
           <h5>Calificaciones del producto</h5>
           <div id="ratings-list">
-             
+             <p class="text-muted" id="default-ratings">Aún no hay comentarios.</p>
           </div>
         </div>
         <div class="col-lg-6">
@@ -284,7 +284,7 @@ function saveRating() {
   `;
 
   let ratingsList = document.getElementById("ratings-list");
-  if (ratingsList.querySelector("p")) ratingsList.innerHTML = "";
+  if (ratingsList.querySelector("#default-ratings")) ratingsList.innerHTML = "";
   ratingsList.insertAdjacentHTML("afterbegin", newRating);
 
   document.getElementById("opinion").value = "";
