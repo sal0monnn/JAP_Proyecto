@@ -98,6 +98,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let productID = localStorage.getItem("productID");
     let url = PRODUCT_INFO_URL + productID + ".json";
+    let commentUrl=PRODUCT_INFO_COMMENTS_URL+ productID + ".json"
+    
 
     getJSONData(url).then(function (resultObj) {
         hideSpinner();
@@ -105,9 +107,31 @@ document.addEventListener("DOMContentLoaded", function () {
         if (resultObj.status === "ok") {
             let product = resultObj.data;
             showProduct(product);
-
-            // 🔹 Aquí agregamos la sección de calificaciones
             showRatings();
+            // 🔹 Aquí agregamos la sección de calificaciones
+            // Cargamos las calificaciones que se encuentran en archivo json
+            getJSONData(commentUrl).then((res)=>{
+                if(res.status ==="ok"){
+                    let calificaciones= res.data;
+                    let ratings = document.getElementById("ratings-list")
+                    if (ratings.querySelector("p")) ratings.innerHTML = "";   
+                    for(calificacion of calificaciones){
+                        const nueva_calificacion=`
+                            <div class="mb-3 border-bottom pb-2">
+                            <strong class="text-primary">${calificacion.user}</strong>
+                            <span class="text-warning">${"★".repeat(calificacion.score)}${"☆".repeat(5 - calificacion.rating)}</span>
+                            <span class="text-muted small"> - ${calificacion.dateTime}</span>
+                            <p>${calificacion.description}</p>
+                            </div>`;
+                        
+                        ratings.insertAdjacentHTML("afterbegin", nueva_calificacion);
+                    }
+                } else{
+                    console.log("Error:", res.data)
+                }   
+            })
+
+            
         } else {
             console.error("Error:", resultObj.data);
             document.getElementById("product-info").innerHTML = `
@@ -117,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                 </div>
             `;
-        }
+        }        
     });
 });
 
@@ -196,7 +220,7 @@ function showRatings() {
         <div class="col-lg-6 border-end">
           <h5>Calificaciones del producto</h5>
           <div id="ratings-list">
-            <p class="text-muted">Aún no hay comentarios.</p>
+             
           </div>
         </div>
         <div class="col-lg-6">
@@ -216,6 +240,7 @@ function showRatings() {
 
   renderStars();
   document.getElementById("submit-rating").addEventListener("click", saveRating);
+ 
 }
 
 // 🔹 Renderiza las estrellitas
