@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
             getJSONData(commentUrl).then((res)=>{
                 if(res.status ==="ok"){
                     let calificaciones= res.data;
-                    if(calificaciones.isArray() && calificaciones.length >=1){
+                    if(Array.isArray(calificaciones) && calificaciones.length >=1){
                         let ratings = document.getElementById("ratings-list")
                         if (ratings.querySelector("p")) ratings.innerHTML = "";   
                         for(calificacion of calificaciones){
