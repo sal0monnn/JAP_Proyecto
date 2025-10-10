@@ -59,7 +59,27 @@
 
   <!-- Calificaciones -->
   <div class="container my-4">
-    <div id="ratings-section"></div>
+    <div>
+    <div class="card shadow-sm p-4" id="ratings-section">
+      <div class="row">
+        <div class="col-lg-6 border-end">
+          <h5>Calificaciones del producto</h5>
+          <div id="ratings-list">
+             <p class="text-muted" id="default-ratings">Aún no hay comentarios.</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h5>Cuéntanos sobre tu compra</h5>
+          <p class="text-muted small">y ayuda a otros usuarios a decidir</p>
+          <div class="mb-2">
+            <label class="form-label">¿Qué te pareció tu producto?</label>
+            <div id="rating-stars" class="mb-2"></div>
+          </div>
+          <textarea id="opinion" class="form-control mb-2" maxlength="150" placeholder="Máximo 150 caracteres"></textarea>
+          <button id="submit-rating" class="btn btn-primary w-100">Enviar calificación</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- productos relacionados -->
