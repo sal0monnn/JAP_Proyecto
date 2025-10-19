@@ -7,6 +7,8 @@ let nombre_perfil = document.getElementById("nombre_perfil")
 let input_img = document.getElementById("input_image")
 let profile_picture = document.getElementById("profile_picture")
 
+let validInput=/\d|\s /
+
 document.addEventListener("DOMContentLoaded",()=>{
 
     if (!localStorage.getItem("email")) {
@@ -34,11 +36,16 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
 })
 
+
 let edit_button   = document.getElementById("editing_button")
 let cancel_button = document.getElementById("cancel_editing_button")
 let save_button   = document.getElementById("save_edit_button")
 
-
+celular.addEventListener("keypress",(e)=>{
+    if(!validInput.test(e.key)){
+        e.preventDefault()
+    }
+})
 
 edit_button.addEventListener("click",()=>{
     save_button.style.display="inline"
