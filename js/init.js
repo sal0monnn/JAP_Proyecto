@@ -50,11 +50,16 @@ document.addEventListener("DOMContentLoaded", function() {
         if (usuarioNombre) {
             usuarioNombre.textContent = usuario;
         }
-
+        
         const logoutBtn = document.getElementById("logout");
         if (logoutBtn) {
             logoutBtn.addEventListener("click", function() {
                 localStorage.removeItem("usuario");
+                localStorage.removeItem("nombre_perfil")
+                localStorage.removeItem("email");
+                localStorage.removeItem("celular");
+                localStorage.removeItem("apellido");
+                localStorage.removeItem("profile_picture");
                 window.location.href = "login.html";
             });
         }

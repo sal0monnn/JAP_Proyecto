@@ -8,22 +8,8 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
+  <link href="css\my-profile.css" rel="stylesheet">
 
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -48,24 +34,43 @@
           </li>
 
           <li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
-     data-bs-toggle="dropdown" aria-expanded="false">
-    <span id="usuarioNombre">Usuario</span>
-  </a>
-  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-    <li><a class="dropdown-item" href="#" id="logout">Cerrar sesión</a></li>
-  </ul>
-</li>
-
-
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span id="usuarioNombre">Usuario</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#" id="logout">Cerrar sesión</a></li>
+              <li>
+                <a class="dropdown-item" href="my-profile.html">
+                  Perfil
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <div>
+      
+    </div>
+    <div class="row" id="profile">
+      <h1>¡Bienvenido a tu Perfil!</h1>
+      <div class="col">
+      <label for="nombre_perfil"> Nombre:</label>   <input class="input_field_profile" type="text" id="nombre_perfil" value="" disabled ><br>
+      <label for="apellido"> Apellido:</label> <input class="input_field_profile" type="text" id="apellido"      value="" disabled><br>
+      <label for="email"> Email:</label>    <input class="input_field_profile" type="text" id="email"         value="" disabled><br>
+      <label for="celular"> Celular:</label>  <input class="input_field_profile" type="text" id="celular"       value="" disabled><br>
+      <button id="editing_button">Editar</button>
+      <button id="save_edit_button" style="display:none;">Guardar</button>
+      <button id="cancel_editing_button" style="display:none;">Cancelar</button>      
+    </div>
+ 
+    <div class="col">
+        <img src="" id="profile_picture"><br>
+        <label for="input_image">Actualizar Imagen</label>
+        <input type="file" accept="image/jpeg, image/png, image/jpg" id="input_image">
+        <button id="img_delete"> Borrar</button>
       </div>
     </div>
   </main>
