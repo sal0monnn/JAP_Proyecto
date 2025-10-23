@@ -50,18 +50,54 @@
     <li><a class="dropdown-item" href="my-profile.html">Perfil</a></li>
   </ul>
 </li>
-
-
         </ul>
       </div>
     </div>
   </nav>
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
-    </div>
+
+<!-- carrito de compras -->
+  <main class="pb-5">
+    <div class="container .px-2 mx-auto position-absolute top-50 start-50 translate-middle">
+      <div class="card shadow-sm p-4 ">
+            <div class="row">
+                <div class="col-md-8 cart">
+                    <div class="title">
+                        <div class="row">
+                            <div class="col"><h4><b>Su carrito de compras</b></h4></div>
+                            <div class="col align-self-center text-right text-muted">Items en el carrito:</div>
+                        </div>
+                    </div>    
+                    <div class="row border-top border-bottom p-3">
+                        <div class="row main align-items-center" id="containcoCart">
+                            <!-- INSERTE ITEMS EN EL CARRITO -->
+                        </div>
+                        <div class="card text-white bg-secondary mx-auto" style="max-width: 350px;" id="emptyCart">
+                          <!-- CARRITO ESTA VACIO -->
+                          <div class="card-body">
+                            <h5 class="card-title">Su carrito esta vacio</h5>
+                            <p class="card-text">¡Agregue sus productos favoritos para poder comprarlos!</p>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 summary p-3" style="padding: 2vh 0;">
+                    <div><h5><b>Resumen de compra</b></h5></div>
+                    <hr>
+                    <div class="row">
+                        <div class="col">Items en el carrito: </div>
+                        <div class="col text-right"> 0000 </div>
+                    </div>
+                    <div class="row m-3">
+                        <div class="col">Total:</div>
+                        <div class="col text-right">0000</div>
+                    </div>
+                    <div class="text-center">
+                      <button  class="btn btn-primary btn-lg p-3 mx-auto">COMPRAR</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
   </main>
   <footer class="text-muted">
     <div class="container">
