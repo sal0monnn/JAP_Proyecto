@@ -27,7 +27,6 @@
 }
 #filter-bar{
     display: flex;
-    background: white;
     justify-content: space-between;
     padding:1%;
     padding-left:4%;
@@ -70,7 +69,6 @@
 .input-box{
     max-width: 500px;
     border-radius: 30px;
-    border-color:  rgb(244, 228, 223);
     overflow: hidden;
     text-indent: 10px;
 }
