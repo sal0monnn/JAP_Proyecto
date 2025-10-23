@@ -57,25 +57,25 @@
     </div>
   </nav>
 
-  <main class="pb-5 container">
+  <main class="pb-5 container mx-auto p-3">
 
-    <div class="search-bar">
+    <div class="search-bar mb-1 col-12">
       <div class="input-group shadow-sm rounded-4">
         <input type="search" class="form-control" placeholder="Busque aquí..." aria-label="Search" aria-describedby="search-addon" id="inputSearch">
       </div>
     </div>
-    <div  id="filter-bar">
-        <div>
-          <button class ="filter_buttons" id="sort_increasing_prices"> <img class="sorting-button-icon" src="img\sort-ascending-button.png"> $</button>
-          <button class ="filter_buttons" id="sort_decreasing_prices" > <img class="sorting-button-icon" src="img\sorting-order.png">$</button>
-          <button class ="filter_buttons" id="relevance"><img class="sorting-button-icon" src="img\sorting-order.png">Rel</button>
+    <div class="container row m-3" id="filter-bar">
+        <div class="col col-md-auto col-sm-12 m-3">
+          <button class ="btn btn-light filter_buttons" id="sort_increasing_prices"> <img class="sorting-button-icon" src="img\sort-ascending-button.png"> $</button>
+          <button class ="btn btn-light filter_buttons" id="sort_decreasing_prices" > <img class="sorting-button-icon" src="img\sorting-order.png">$</button>
+          <button class ="btn btn-light filter_buttons" id="relevance"><img class="sorting-button-icon" src="img\sorting-order.png">Rel</button>
         </div>
-        <div>
+        <div class="col-md-auto m-3 col-sm-12">
            <span>Precio</span>
-           <input type="text" class="input-box" inputmode="numeric" oninput="this.value = this.value.replace(/\D+/g, '')" id="min_price" placeholder="0">
-           <input type="text" class="input-box" inputmode="numeric" oninput="this.value = this.value.replace(/\D+/g, '')"  id="max_price" placeholder="0">
-           <button class="btn btn-light" id="boton_filtrar">Filtrar</button>
-           <button class="btn btn-light" id="clear_button"> Limpiar</button>
+           <input type="text" class="input-box m-1" inputmode="numeric" oninput="this.value = this.value.replace(/\D+/g, '')" id="min_price" placeholder="0">
+           <input type="text" class="input-box m-1" inputmode="numeric" oninput="this.value = this.value.replace(/\D+/g, '')"  id="max_price" placeholder="0">
+           <button class="btn btn-light m-1" id="boton_filtrar">Filtrar</button>
+           <button class="btn btn-light m-1" id="clear_button"> Limpiar</button>
         </div>
     </div>
     <div class="row" id="products-container">
