@@ -8,13 +8,6 @@
 .card {
     border-radius: 15px;
     overflow: hidden;
-    width: 100%;
-    margin: 0 auto;
-    padding: 2%;
-}
-
-.custom-card{
-  margin-top: 10%;
 }
 
 .card-body {
@@ -50,10 +43,6 @@
     object-fit: cover;
     max-height: 400px;
     border-radius: 10%;
-}
-
-.thumbnail-image.active{
-  border-color: grey;
 }
 
 /* calificacion */

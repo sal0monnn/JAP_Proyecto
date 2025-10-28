@@ -190,7 +190,7 @@ function showRelatedProducts(product){
     
     relatedProducts.forEach((relatedProduct) => {
         htmlRelatedProducts += 
-        `<div class="col-12 col-md-12 col-lg-4 related-product-card">
+        `<div class="col-12 col-md-12 col-lg-4 m-3 related-product-card">
             <div class="card" onclick="setProductID(${relatedProduct.id})" id="related-product">
                 <img src="${relatedProduct.image}" class="card-img-top" alt="${relatedProduct.name}">
                 <div class="card-body">
