@@ -146,3 +146,9 @@
   transform: scale(1.1);
   border-color: orange;
 }
+
+#btnComprar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

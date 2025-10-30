@@ -45,8 +45,8 @@ function showProduct(product) {
                             <p class="mb-4">${product.description}</p>
                         </div>
                     </div>
-                  <button id="btnComprar" class="btn btn-primary">Comprar</button>
-                      
+               <button id="btnComprar" class="btn btn-primary d-inline-flex align-items-center"><i class="fa fa-shopping-cart me-2"></i> Comprar</button>
+
                 </div>
             </div>
         </div>
@@ -84,6 +84,29 @@ document.addEventListener("DOMContentLoaded", function () {
             showProduct(product);
             
 
+                        const btnComprar = document.getElementById("btnComprar");
+            btnComprar.addEventListener("click", function () {
+                const productoComprado = {
+                    id: product.id,
+                    nombre: product.name,
+                    descripcion: product.description,
+                    costo: product.cost,
+                    moneda: product.currency,
+                    imagen: product.images[0],
+                    cantidad: 1
+                };
+                let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+                const productoExistente = carrito.find(item => item.id === productoComprado.id);
+
+                if (productoExistente) {
+                    productoExistente.cantidad += 1;
+                } else {
+                    carrito.push(productoComprado);
+                }
+                localStorage.setItem("carrito", JSON.stringify(carrito));
+                window.location.href = "cart.html";
+            });
 
             showRelatedProducts(product);
 
