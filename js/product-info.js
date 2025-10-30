@@ -45,6 +45,8 @@ function showProduct(product) {
                             <p class="mb-4">${product.description}</p>
                         </div>
                     </div>
+                  <button id="btnComprar" class="btn btn-primary">Comprar</button>
+                      
                 </div>
             </div>
         </div>
