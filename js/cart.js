@@ -1,5 +1,7 @@
+let cartItems=[]
+
 document.addEventListener("DOMContentLoaded", function() {
-    let cartItems = localStorage.getItem("carrito");
+    cartItems = localStorage.getItem("carrito");
     cartItems = JSON.parse(cartItems);
 
     let containerProducts = document.getElementById("containCart"); 
@@ -15,19 +17,50 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 })
+function increaseValue(id){
+        producto=cartItems.find(item => item.id === id);
+        producto.cantidad++
+        localStorage.setItem("carrito", JSON.stringify(cartItems));
+        showCartItems(cartItems)
+}
+function decreaseValue(id){
+    
+    
+    producto=cartItems.find(item => item.id === id);
+    if(producto.cantidad>1){
+        producto.cantidad--
+        localStorage.setItem("carrito", JSON.stringify(cartItems));
+        showCartItems(cartItems)
+    }else{
+        const index= cartItems.indexOf(producto)
+        cartItems.splice(index,1)
+        localStorage.setItem("carrito", JSON.stringify(cartItems));
+        
+        let containerProducts = document.getElementById("containCart"); 
+        let emptyCart = document.getElementById('emptyCart'); 
+
+        if (cartItems.length === 0 || !cartItems) {
+            containerProducts.style.display = 'none';
+            emptyCart.style.display = 'block'; 
+        }
+        
+
+        showCartItems(cartItems)
+    }
+}
 
 function showCartItems(cartItems){
     let htmlCartItems = "";
     let precioTotal = 0;
     let contador = 0;
-
+    
     cartItems.forEach((cartItem) => {
         if (cartItem.moneda==="UYU"){
-            precioTotal+=cartItem.costo;
+            precioTotal+=cartItem.costo*cartItem.cantidad;
         }else{
-            precioTotal+=cartItem.costo*40;
+            precioTotal+=cartItem.costo*40*cartItem.cantidad;
         }
-        contador+=1;
+        contador+=cartItem.cantidad;
         htmlCartItems += 
         `<div class="row main align-items-center border-top border-bottom p-3">
             <div class="col-2"><img class="img-fluid" src="${cartItem.imagen}"></div>
@@ -36,7 +69,9 @@ function showCartItems(cartItems){
                     <div class="row">${cartItem.descripcion}</div>
                 </div>
             <div class="col">
-                <!-- AJUSTAR CANTIDADES AQUI -->
+                <div class="row">${cartItem.cantidad}</div>
+                <button class="btn btn-secondary" id="increaseValue" onClick="increaseValue(${cartItem.id})"> + </button>
+                <button class="btn btn-secondary" id="decreaseValue" onClick="decreaseValue(${cartItem.id})"> - </button>
             </div>
             <div class="col">${cartItem.moneda} ${cartItem.costo}</div>
         </div>
@@ -44,10 +79,7 @@ function showCartItems(cartItems){
     }); 
     document.getElementById("itemList").innerHTML = htmlCartItems;
 
-    const finalLenght = document.createElement("p");
-    finalLenght.innerText = `${contador}`;
-    document.getElementById('listLenght').appendChild(finalLenght);
-    const totalPrice = document.createElement("p");
-    totalPrice.innerText = `UYU ${precioTotal}`;
-    document.getElementById('listTotal').appendChild(totalPrice);
+    
+    document.getElementById('listLenght').innerText=contador;
+    document.getElementById('listTotal').innerText=precioTotal;
 }

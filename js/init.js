@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 localStorage.removeItem("celular");
                 localStorage.removeItem("apellido");
                 localStorage.removeItem("profile_picture");
+                localStorage.removeItem("carrito");
                 window.location.href = "login.html";
             });
         }
