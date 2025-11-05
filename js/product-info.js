@@ -1,3 +1,4 @@
+let product={}
 function showProduct(product) { 
     let priceToShow = `${product.cost} ${product.currency}`;
     let soldCountText = `${product.soldCount} vendidos`;
@@ -45,8 +46,11 @@ function showProduct(product) {
                             <p class="mb-4">${product.description}</p>
                         </div>
                     </div>
-               <button id="btnComprar" class="btn btn-primary d-inline-flex align-items-center"><i class="fa fa-shopping-cart me-2"></i> Comprar</button>
-
+                    <button id="btnComprar" class="btn btn-primary d-inline-flex align-items-center"><i class="fa fa-shopping-cart me-2"></i> Comprar</button>
+                    
+                    <input type="number" id="cantidadProducto" value="1" min="0" max="100" step="1">
+                
+               
                 </div>
             </div>
         </div>
@@ -80,34 +84,8 @@ document.addEventListener("DOMContentLoaded", function () {
         hideSpinner();
 
         if (resultObj.status === "ok") {
-            let product = resultObj.data;
+            product = resultObj.data;
             showProduct(product);
-            
-
-                        const btnComprar = document.getElementById("btnComprar");
-            btnComprar.addEventListener("click", function () {
-                const productoComprado = {
-                    id: product.id,
-                    nombre: product.name,
-                    descripcion: product.description,
-                    costo: product.cost,
-                    moneda: product.currency,
-                    imagen: product.images[0],
-                    cantidad: 1
-                };
-                let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-                const productoExistente = carrito.find(item => item.id === productoComprado.id);
-
-                if (productoExistente) {
-                    productoExistente.cantidad += 1;
-                } else {
-                    carrito.push(productoComprado);
-                }
-                localStorage.setItem("carrito", JSON.stringify(carrito));
-                window.location.href = "cart.html";
-            });
-
             showRelatedProducts(product);
 
             //  Aquí agregamos la sección de calificaciones
@@ -134,7 +112,33 @@ document.addEventListener("DOMContentLoaded", function () {
         }        
     });
 });
+document.addEventListener("click",(e)=>{
+    if (e.target.id=="btnComprar"){
+        btnComprar=e.target
+        const cantidadProducto = document.getElementById("cantidadProducto").value.trim()
+            const productoComprado = {
+                id: product.id,
+                nombre: product.name,
+                descripcion: product.description,
+                costo: product.cost,
+                moneda: product.currency,
+                imagen: product.images[0],
+                cantidad: cantidadProducto
+            };
+            let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
+            const productoExistente = carrito.find(item => item.id === productoComprado.id);
+                
+            if (productoExistente) {
+                    
+                productoExistente.cantidad=parseInt(productoExistente.cantidad)+ parseInt(cantidadProducto)
+            } else {
+                carrito.push(productoComprado);
+            }
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+            window.location.href = "cart.html";
+        };  
+})
 
 
 // Renderiza calificaciones y formulario
