@@ -301,3 +301,11 @@ body.dark-mode .checked {
 body, .card, .navbar, .jumbotron, footer, .btn, .dropdown-menu {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
+
+
+button#increaseValue,
+button#decreaseValue {
+  height: 40px !important;
+  width: 40px !important;
+  padding: 0 !important;
+}

@@ -62,17 +62,20 @@ function showCartItems(cartItems){
         }
         contador+=cartItem.cantidad;
         htmlCartItems += 
-        `<div class="row main align-items-center border-top border-bottom p-3">
+        `<div class="row main align-items-center border-top border-bottom p-0">
             <div class="col-2"><img class="img-fluid" src="${cartItem.imagen}"></div>
                 <div class="col">
                     <div class="row text-muted">${cartItem.nombre}</div>
                     <div class="row">${cartItem.descripcion}</div>
                 </div>
-            <div class="col">
-                <div class="row">${cartItem.cantidad}</div>
-                <button class="btn btn-secondary" id="increaseValue" onClick="increaseValue(${cartItem.id})"> + </button>
-                <button class="btn btn-secondary" id="decreaseValue" onClick="decreaseValue(${cartItem.id})"> - </button>
-            </div>
+            <div class="col" style="display: flex; align-items: center; gap: 15px;">
+                <button class="btn btn-primary" id="increaseValue" onClick="increaseValue(${cartItem.id})"> + </button>
+                <button class="btn btn-danger" id="decreaseValue" onClick="decreaseValue(${cartItem.id})"> - </button>
+                                <div class="row">${cartItem.cantidad}</div>
+
+           
+                </div>
+            
             <div class="col">${cartItem.moneda} ${cartItem.costo}</div>
         </div>
         `; 
