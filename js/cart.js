@@ -96,25 +96,25 @@ document.getElementById("btnFinalizarCompra").addEventListener("click", function
     const localidad = document.getElementById("localidad")?.value.trim();
  
     if (!calle || !numero || !esquina || !departamento || !localidad) {
-        alert("Debe completar todos los campos de dirección.");
+        alert("Debe completar todos los campos de dirección");
         return;
     }
     let envioSeleccionado = document.querySelector('input[name="envio"]:checked');
     if (!envioSeleccionado) {
-        alert("Debe seleccionar una forma de envío.");
+        alert("Debe seleccionar una forma de envío");
         return;
     }
     let cantidades = document.querySelectorAll(".product-quantity");
 
     for (let qty of cantidades) {
         if (!qty.value || qty.value <= 0) {
-            alert("La cantidad de todos los productos debe ser mayor a 0.");
+            alert("La cantidad de todos los productos debe ser mayor a 0");
             return;
         }
     }
     let metodoPago = document.querySelector('input[name="formaPago"]:checked');
     if (!metodoPago) {
-        alert("Debe seleccionar una forma de pago.");
+        alert("Debe seleccionar una forma de pago");
         return;
     }
     if (metodoPago.value === "tarjeta") {
@@ -123,7 +123,7 @@ document.getElementById("btnFinalizarCompra").addEventListener("click", function
         const cvv = document.getElementById("cvvTarjeta")?.value.trim();
 
         if (!numTarjeta || !vencimiento || !cvv) {
-            alert("Debe completar todos los campos de tarjeta.");
+            alert("Debe completar todos los campos de tarjeta");
             return;
         }
     }
@@ -131,9 +131,9 @@ document.getElementById("btnFinalizarCompra").addEventListener("click", function
     if (metodoPago.value === "transferencia") {
   const nroCuenta = document.getElementById("numCuenta")?.value.trim();
         if (!nroCuenta) {
-            alert("Debe ingresar el número de cuenta para transferencia.");
+            alert("Debe ingresar el número de cuenta");
             return;
         }
     }
-    alert("Su compra ha sido realizada con éxito.");
+    alert("Su compra ha sido realizada con éxito");
 });
