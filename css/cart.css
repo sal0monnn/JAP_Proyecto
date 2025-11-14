@@ -17,6 +17,6 @@ button#decreaseValue {
     border-color: rgb(83, 78, 78);
     padding: 5px;
 }
-#carrito-contenedor{
-    flex: 1 0 auto;
+.card {
+    width: 100%;
 }
