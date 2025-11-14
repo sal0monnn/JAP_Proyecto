@@ -59,7 +59,7 @@
 <!-- carrito de compras -->
   <main class="pb-5">
      
-    <div class="container  d-flex justify-content-center align-items-center margin-top-20px">
+    <div class="container  d-flex justify-content-center align-items-center margin-top-20px " id="carrito-contenedor">
       <div class="card shadow-sm p-4 ">
             <div class="row">
                 <div class="col-md-8 cart">
@@ -86,67 +86,64 @@
                     </div>
                 </div>
                 <div class="col-md-4 summary px-2">
-
                   <div class="flex-column nav" >
                     <a class="btn btn-primary" data-bs-toggle="collapse" href="#shipment_field" role="button" aria-expanded="false" aria-controls="direccion-field">
                       Envio
                     </a>
                     <div class="nav-item purchase_info_field" id="shipment_field">
                       <label for="premium"> Premium 2 a 5 dias (15%) </label>
-                        <input type="radio" name="envio" id="premium" value="0.15">
-                        <label for="express"> Express 5 a 8 dias (7%)</label>
-                        <input type="radio" name = "envio" id="express"  value="0.07">
-                        <label for="standard">Standard 12 a 15 dias (5%)</label>
-                        <input type="radio" name= "envio" id="standard" value="0.05" checked> 
+                      <input type="radio" name="envio" id="premium" value="0.15">
+                      <label for="express"> Express 5 a 8 dias (7%)</label>
+                      <input type="radio" name = "envio" id="express"  value="0.07">
+                      <label for="standard">Standard 12 a 15 dias (5%)</label>
+                      <input type="radio" name= "envio" id="standard" value="0.05" checked> 
+                    </div>
+
+                      <a class="btn btn-primary" data-bs-toggle="collapse" href="#direction-field" role="button" aria-expanded="false" aria-controls="direccion-field">
+                        Dirección
+                      </a>
+                      <div class="collapse mt-2 nav-item purchase_info_field" id="direction-field">
+                        <label for="departamento">Departamento</label>
+                        <input type="text" id="departamento" class="form-control mb-2">
+
+                        <label for="localidad">Localidad</label>
+                        <input type="text" id="localidad" class="form-control mb-2">
+
+                        <label for="calle">Calle</label>
+                        <input type="text" id="calle" class="form-control mb-2">
+
+                        <label for="numero">Número</label>
+                        <input type="text" id="numero" class="form-control mb-2">
+
+                        <label for="esquina">Esquina</label>
+                        <input type="text" id="esquina" class="form-control">
                       </div>
-
-                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#direction-field" role="button" aria-expanded="false" aria-controls="direccion-field">
-                          Dirección
-                        </a>
-                        <div class="collapse mt-2 nav-item purchase_info_field" id="direction-field">
-                          <label for="departamento">Departamento</label>
-                          <input type="text" id="departamento" class="form-control mb-2">
-
-                          <label for="localidad">Localidad</label>
-                          <input type="text" id="localidad" class="form-control mb-2">
-
-                          <label for="calle">Calle</label>
-                          <input type="text" id="calle" class="form-control mb-2">
-
-                          <label for="numero">Número</label>
-                          <input type="text" id="numero" class="form-control mb-2">
-
-                          <label for="esquina">Esquina</label>
-                          <input type="text" id="esquina" class="form-control">
-                        </div>
-                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#payment_field" role="button" aria-expanded="false" aria-controls="direccion-field">
+                      <a class="btn btn-primary" data-bs-toggle="collapse" href="#payment_field" role="button" aria-expanded="false" aria-controls="direccion-field">
                           Informacion de pago
-                        </a>
-                        <div class="nav-item collapse purchase_info_field" id="payment_field" >
-                          <label for="tarjeta">Tarjeta de Credito</label>
-                          <input type="radio" name="formaPago" value="tarjeta" id="tarjeta" checked="checked"><br>
+                      </a>
+                      <div class="nav-item collapse purchase_info_field" id="payment_field" >
+                        <label for="tarjeta">Tarjeta de Credito</label>
+                        <input type="radio" name="formaPago" value="tarjeta" id="tarjeta" checked="checked"><br>
                          
-                          <div id="inputTarjeta" style="display:block">
-                            <label for="numeroTarjeta">Numero de Tarjeta:</label>
-                            <input type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}"
-                              maxlength="19" autocomplete="cc-number"
-                              placeholder="xxxx xxxx xxxx xxxx" required
-                              id="numeroTarjeta" >
-                            <label for="vencimientoTarjeta">Vencimiento:</label>
-                            <input type="date" id="vencimientoTarjeta"><br>
-                            <label for="cvvTarjeta">CVV: </label>
-                            <input type="tel" id="cvvTarjeta" value=""> 
+                        <div id="inputTarjeta" style="display:block">
+                          <label for="numeroTarjeta">Numero de Tarjeta:</label>
+                          <input type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}"
+                            maxlength="19" autocomplete="cc-number"
+                            placeholder="xxxx xxxx xxxx xxxx" required
+                            id="numeroTarjeta" >
+                          <label for="vencimientoTarjeta">Vencimiento:</label>
+                          <input type="date" id="vencimientoTarjeta"><br>
+                          <label for="cvvTarjeta">CVV: </label>
+                          <input type="tel" id="cvvTarjeta" value=""> 
                               
-                          </div >
-                          <input type="radio" name="formaPago" value="transferencia" id="transferencia">
-                          <label for="transferencia">Transferencia Bancaria</label>
-                          <fieldset id="inputTransferencia" style="display:none">
-                            <label for="nroCuenta">Numero de Cuenta:</label>
-                            <input type="number" id="nroCuenta"> 
-                          </div>
-                        </div>
-					            
-                  </div>
+                        </div >
+                        <input type="radio" name="formaPago" value="transferencia" id="transferencia">
+                        <label for="transferencia">Transferencia Bancaria</label>
+                        <fieldset id="inputTransferencia" style="display:none">
+                          <label for="nroCuenta">Numero de Cuenta:</label>
+                          <input type="number" id="nroCuenta"> 
+                      </div>
+                    </div>
                     <div><h5><b>Resumen de compra</b></h5></div>
                     <hr>
                     <div><h6><b>Costos</b></h6></div>
@@ -170,7 +167,8 @@
                     <hr>
                     <div id="btnFinalizarCompra"  class="text-center">
                       <button  class="btn btn-success btn-lg p-3 mx-auto">Finalizar Compra</button>
-                    </div>
+                    </div>      
+                  </div>
                 </div>
             </div>
           </div>
