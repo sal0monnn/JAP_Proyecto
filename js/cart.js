@@ -64,7 +64,7 @@ function showCartItems(cartItems){
         }else{
             subTotal+=cartItem.costo*40*cartItem.cantidad;
         }
-        contador+=cartItem.cantidad;
+        contador+=parseInt(cartItem.cantidad);
         htmlCartItems += 
         `<div class="row main align-items-center border-top border-bottom p-0">
             <div class="col-2"><img class="img-fluid" src="${cartItem.imagen}"></div>
