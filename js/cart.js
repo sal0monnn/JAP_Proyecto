@@ -1,4 +1,5 @@
 let cartItems=[]
+let envioSeleccionado = document.querySelector('input[name="envio"]:checked');
 
 document.addEventListener("DOMContentLoaded", function() {
     cartItems = localStorage.getItem("carrito");
@@ -21,7 +22,7 @@ function increaseValue(id){
         producto=cartItems.find(item => item.id === id);
         producto.cantidad++
         localStorage.setItem("carrito", JSON.stringify(cartItems));
-        showCartItems(cartItems)
+        showCartItems(cartItems);
 }
 function decreaseValue(id){
     
@@ -49,16 +50,19 @@ function decreaseValue(id){
     }
 }
 
+
+
 function showCartItems(cartItems){
     let htmlCartItems = "";
-    let precioTotal = 0;
-    let contador = 0;
+    let subTotal   = 0;
+    let contador   = 0;
+    let costoEnvio = 0;
     
     cartItems.forEach((cartItem) => {
         if (cartItem.moneda==="UYU"){
-            precioTotal+=cartItem.costo*cartItem.cantidad;
+            subTotal+=cartItem.costo*cartItem.cantidad;
         }else{
-            precioTotal+=cartItem.costo*40*cartItem.cantidad;
+            subTotal+=cartItem.costo*40*cartItem.cantidad;
         }
         contador+=cartItem.cantidad;
         htmlCartItems += 
@@ -77,15 +81,46 @@ function showCartItems(cartItems){
                 </div>
             
             <div class="col">${cartItem.moneda} ${cartItem.costo}</div>
+            <div class="col">Subtotal: ${cartItem.moneda} ${cartItem.costo*cartItem.cantidad} </div>
         </div>
         `; 
     }); 
-    document.getElementById("itemList").innerHTML = htmlCartItems;
 
-    
+    costoEnvio=subTotal * (envioSeleccionado.value.trim());
+
+    document.getElementById("itemList").innerHTML = htmlCartItems;
+    document.getElementById("subtotal").innerText=subTotal;
     document.getElementById('listLenght').innerText=contador;
-    document.getElementById('listTotal').innerText=precioTotal;
+    document.getElementById('listTotal').innerText=subTotal+costoEnvio;
+    document.getElementById("costoEnvio").innerText=costoEnvio;
 }
+
+const opcionesPago = document.getElementsByName("formaPago");
+
+for(let opcionPago of opcionesPago){
+    opcionPago.addEventListener("change",()=>{
+        if (opcionPago.checked){
+            if (opcionPago.value=="tarjeta"){
+                document.getElementById("inputTarjeta").style.display="block"
+                document.getElementById("inputTransferencia").style.display="none"
+            }
+            else if(opcionPago.value=="transferencia"){
+                document.getElementById("inputTransferencia").style.display="block"
+                document.getElementById("inputTarjeta").style.display="none"
+            }
+        }
+    })
+}
+const opcionesEnvio = document.getElementsByName("envio")
+for(let opcionEnvio of opcionesEnvio){
+    opcionEnvio.addEventListener("change",()=>{
+        if (opcionEnvio.checked){
+            envioSeleccionado=opcionEnvio;
+            showCartItems(cartItems)
+        }
+    })
+}
+        
 
 
 document.getElementById("btnFinalizarCompra").addEventListener("click", function () {
@@ -94,12 +129,12 @@ document.getElementById("btnFinalizarCompra").addEventListener("click", function
     const esquina = document.getElementById("esquina")?.value.trim();
     const departamento = document.getElementById("departamento")?.value.trim();
     const localidad = document.getElementById("localidad")?.value.trim();
- 
+
     if (!calle || !numero || !esquina || !departamento || !localidad) {
         alert("Debe completar todos los campos de dirección");
         return;
     }
-    let envioSeleccionado = document.querySelector('input[name="envio"]:checked');
+    
     if (!envioSeleccionado) {
         alert("Debe seleccionar una forma de envío");
         return;
@@ -112,7 +147,7 @@ document.getElementById("btnFinalizarCompra").addEventListener("click", function
             return;
         }
     }
-    let metodoPago = document.querySelector('input[name="formaPago"]:checked');
+    let metodoPago = document.querySelector('input[name="formaPago"]');
     if (!metodoPago) {
         alert("Debe seleccionar una forma de pago");
         return;

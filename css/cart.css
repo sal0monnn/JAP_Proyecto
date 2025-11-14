@@ -1,0 +1,19 @@
+button#increaseValue,
+button#decreaseValue {
+  height: 40px !important;
+  width: 40px !important;
+  padding: 0 !important;
+}
+.direccion_input{
+    width: 100%
+}
+
+.btn{
+    margin-bottom: 10px;
+}
+.purchase_info_field{
+    border-left-style: solid;
+    border-left-width:1px; 
+    border-color: rgb(83, 78, 78);
+    padding: 5px;
+}
