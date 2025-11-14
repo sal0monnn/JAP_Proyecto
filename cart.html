@@ -59,8 +59,8 @@
 <!-- carrito de compras -->
   <main class="pb-5">
      
-    <div class="container  d-flex justify-content-center align-items-center margin-top-20px " id="carrito-contenedor">
-      <div class="card shadow-sm p-4 ">
+    <div class="container  d-flex justify-content-center align-items-center margin-top-20px " >
+      <div class="card shadow-sm p-4"  id="carrito-contenedor" >
             <div class="row">
                 <div class="col-md-8 cart">
                     <div class="title">
@@ -147,6 +147,11 @@
                     <div><h5><b>Resumen de compra</b></h5></div>
                     <hr>
                     <div><h6><b>Costos</b></h6></div>
+
+                    <div class="row">
+                        <div class="col">Items en el carrito:</div>
+                        <div class="col text-right" id="listLenght"></div>
+                    </div>
                     <div class="row">
                         <label for="subtotal">Subtotal:</label>
                         <span id="subtotal"></span>
@@ -155,11 +160,8 @@
                         <label for="costoEnvio">Costo de envio:</label>
                         <span id="costoEnvio"></span>
                     </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col">Items en el carrito:</div>
-                        <div class="col text-right" id="listLenght"></div>
-                    </div>
+
+
                     <div class="row">
                       <div class="col">Total:</div>
                       <div class="col text-right" id="listTotal"></div>
