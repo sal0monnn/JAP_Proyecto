@@ -136,14 +136,14 @@ document.getElementById("btnFinalizarCompra").addEventListener("click", function
     }
     
     if (!envioSeleccionado) {
-        alert("Debe seleccionar una forma de envío");
+        alert("Debe seleccionar un tipo de envío");
         return;
     }
     let cantidades = document.querySelectorAll(".product-quantity");
 
     for (let qty of cantidades) {
         if (!qty.value || qty.value <= 0) {
-            alert("La cantidad de todos los productos debe ser mayor a 0");
+            alert("Si desea comprar seleccione el articulo");
             return;
         }
     }
@@ -170,5 +170,5 @@ document.getElementById("btnFinalizarCompra").addEventListener("click", function
             return;
         }
     }
-    alert("Su compra ha sido realizada con éxito");
+    alert("Su compra ha sido realizada con éxito! Gracias por preferirnos  :)");
 });
