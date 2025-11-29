@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
     showSpinner();
 
     let productID = localStorage.getItem("productID");
-    let url = PRODUCT_INFO_URL + productID + ".json";
+    let url = PRODUCT_INFO_URL + productID ;
     let commentUrl=PRODUCT_INFO_COMMENTS_URL + product.id + "/comments"
     
 
