@@ -1,18 +1,38 @@
- document.addEventListener("DOMContentLoaded", (event) => {
-    if (localStorage.getItem("usuario")){
-        window.location.replace("/index.html");
+document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("usuario")) {
+    window.location.replace("/index.html");
+  }
+});
+
+document.getElementById("loginButton").addEventListener("click", async () => {
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  if (username.length === 0 || password.length === 0) {
+    alert("Debe completar ambos campos.");
+    return;
+  }
+
+  try {
+    const resp = await fetch("http://localhost:3000/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password })
+    });
+
+    if (!resp.ok) {
+      alert("Usuario o contraseña incorrectos.");
+      return;
     }
-  });
 
+    const data = await resp.json();
 
-document.getElementById("loginButton").addEventListener("click",()=>{
-    let usuario  = document.getElementById("username").value.trim()
-    let password = document.getElementById("password").value.trim()
+    localStorage.setItem("usuario", username);
+    localStorage.setItem("token", data.token);
 
-    if (password.length > 0 && usuario.length>0){
-            localStorage.setItem("usuario", usuario);  
-             window.location.replace("/index.html");
-    } else {
-        alert ("Debe completar ambos campos.");
-    }
-})
+    window.location.replace("/index.html");
+
+  } catch (error) {
+    alert("Error de conexión con el servidor.");
+  }
+});
