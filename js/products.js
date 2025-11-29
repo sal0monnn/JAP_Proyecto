@@ -40,7 +40,7 @@ function setProductID(id) {
 if (!catID) {
     console.error("No se encontró un catID en localStorage.");}
     
-    let url = PRODUCTS_URL + catID + ".json";
+    let url = PRODUCTS_URL + catID ;
 
   
 

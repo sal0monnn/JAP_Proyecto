@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let productID = localStorage.getItem("productID");
     let url = PRODUCT_INFO_URL + productID + ".json";
-    let commentUrl=PRODUCT_INFO_COMMENTS_URL+ productID + ".json"
+    let commentUrl=PRODUCT_INFO_COMMENTS_URL + product.id + "/comments"
     
 
     getJSONData(url).then(function (resultObj) {
