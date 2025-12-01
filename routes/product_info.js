@@ -1,14 +1,15 @@
-const productInfoRoutes = (app, fs) => {
-  app.get('/products/:id', (req, res) => {
-    const rutaProductInfo = `./api/products/${req.params.id}.json`;  
+module.exports = (app, fs, authMiddleware) => {
+
+  app.get('/products/:id', authMiddleware, (req, res) => {
+    const rutaProductInfo = `./api/products/${req.params.id}.json`;
+
     fs.readFile(rutaProductInfo, 'utf8', (err, data) => {
       if (err) {
-        res.status(500).send('Error al leer el archivo');
-        return;
+        return res.status(500).send('Error al leer el archivo');
       }
-      res.send(JSON.parse(data));
+      
+      res.json(JSON.parse(data));
     });
   });
-};
 
-module.exports = productInfoRoutes;
+};
