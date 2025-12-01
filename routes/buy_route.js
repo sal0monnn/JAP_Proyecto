@@ -1,15 +1,16 @@
-const cartBuyRoute = (app, fs) => {
-  const ruta = `./api/cart/buy.json'`; 
-  app.get('/cart_buy', (req, res) => {
-     
+module.exports = (app, fs, authMiddleware) => {
+
+  const ruta = `./api/cart/buy.json`;  
+
+  app.get('/cart_buy', authMiddleware, (req, res) => {
+
     fs.readFile(ruta, 'utf8', (err, data) => {
       if (err) {
-        res.status(500).send('Error al leer el archivo');
-        return;
+        return res.status(500).send('Error al leer el archivo');
       }
-      res.send(JSON.parse(data));
+      res.json(JSON.parse(data));
     });
-  });
-};
 
-module.exports = cartBuyRoute;
+  });
+
+};
