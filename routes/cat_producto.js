@@ -1,14 +1,15 @@
-const productsRoutes = (app, fs) => {
-  app.get('/cats/:id', (req, res) => {
-    const rutaProductos = `./api/cats_products/${req.params.id}.json`;  
-    fs.readFile(rutaProductos, 'utf8', (err, data) => {
+module.exports = (app, fs, authMiddleware) => {
+
+  // Ruta protegida → requiere token
+  app.get('/cats/:id', authMiddleware, (req, res) => {
+    const rutaProductos = `./api/cats_products/${req.params.id}.json`;
+
+    fs.readFile(rutaProductos, "utf8", (err, data) => {
       if (err) {
-        res.status(500).send('Error al leer el archivo');
-        return;
+        return res.status(500).send("Error al leer el archivo");
       }
-      res.send(JSON.parse(data));
+      res.json(JSON.parse(data));
     });
   });
-};
 
-module.exports = productsRoutes;
+};
