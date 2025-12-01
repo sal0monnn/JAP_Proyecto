@@ -2,12 +2,23 @@ const catRoutes = require('./cats.js');
 const productsRoutes = require('./cat_producto.js');
 const productInfoRoutes = require('./product_info.js');
 const commentRoutes = require('./comment_routes.js');
-const publishRoute  = require('./publish.js');
-const buyRoute      = require('./buy_route.js');
+const publishRoute = require('./publish.js');
+const buyRoute = require('./buy_route.js');
 const cartInfoRoute = require('./cart_info_route.js');
 const jwt = require("jsonwebtoken");
 
-const appRouter = (app, fs) => {
+module.exports = function (app, fs, authMiddleware) {
+
+  // RUTAS PROTEGIDAS (REQUIEREN TOKEN)
+  app.use("/cats", authMiddleware);
+  app.use("/products", authMiddleware);
+  app.use("/product-info", authMiddleware);
+  app.use("/comments", authMiddleware);
+  app.use("/publish", authMiddleware);
+  app.use("/buy", authMiddleware);
+  app.use("/cart-info", authMiddleware);
+
+  // CARGAR RUTAS REALES
   catRoutes(app, fs);
   productsRoutes(app, fs);
   productInfoRoutes(app, fs);
@@ -16,6 +27,7 @@ const appRouter = (app, fs) => {
   buyRoute(app, fs);
   cartInfoRoute(app, fs);
 
+  // LOGIN (NO REQUIERE TOKEN)
   app.post("/login", (req, res) => {
     const { username, password } = req.body;
 
@@ -23,6 +35,7 @@ const appRouter = (app, fs) => {
       return res.status(400).json({ mensaje: "Faltan datos" });
     }
 
+    // acepta cualquier usuario/contraseña
     const id = username;
 
     const token = jwt.sign(
@@ -37,6 +50,5 @@ const appRouter = (app, fs) => {
       user: { id, username }
     });
   });
-};
 
-module.exports = appRouter;
+};
