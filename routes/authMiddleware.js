@@ -3,12 +3,12 @@ const jwt = require("jsonwebtoken");
 function authMiddleware(req, res, next) {
   const authHeader = req.headers.authorization;
 
-  // Verificar si llega el header Authorization
+
   if (!authHeader) {
     return res.status(401).json({ mensaje: "Token no proporcionado" });
   }
 
-  // El token viene como: "Bearer xxxx..."
+  
   const token = authHeader.split(" ")[1];
 
   try {
@@ -21,3 +21,4 @@ function authMiddleware(req, res, next) {
 }
 
 module.exports = authMiddleware;
+
